@@ -1,0 +1,106 @@
+<div class="borrow-page">
+
+  <h1>📚 Borrow a Book</h1>
+
+  <div class="borrow-form">
+
+    <label for="book">
+      Select Book
+    </label>
+
+    <select
+      id="book"
+      [(ngModel)]="selectedBookId"
+    >
+
+      <option value="">
+        -- Select a Book --
+      </option>
+
+      @for (book of books; track book._id) {
+
+        <option [value]="book._id">
+          {{ book.title }} - Available: {{ book.quantity }}
+        </option>
+
+      }
+
+    </select>
+
+
+    <label for="borrower">
+      Borrower Name
+    </label>
+
+    <input
+      id="borrower"
+      type="text"
+      [(ngModel)]="borrowerName"
+      placeholder="Enter borrower name"
+    />
+
+
+    <button
+      type="button"
+      (click)="borrowBook()"
+    >
+      Borrow Book
+    </button>
+
+  </div>
+
+
+  <div class="borrowed-section">
+
+    <h2>📖 Borrowed Books</h2>
+
+    @if (borrows.length > 0) {
+
+      <div class="borrowed-list">
+
+        @for (borrow of borrows; track borrow._id) {
+
+          <div class="borrowed-card">
+
+            <h3>
+              {{ borrow.book.title }}
+            </h3>
+
+            <p>
+              <strong>Borrower:</strong>
+              {{ borrow.borrowerName }}
+            </p>
+
+            <p>
+              <strong>Status:</strong>
+              {{ borrow.returned ? 'Returned' : 'Borrowed' }}
+            </p>
+
+            @if (!borrow.returned) {
+
+              <button
+                type="button"
+                (click)="returnBook(borrow._id)"
+              >
+                Return Book
+              </button>
+
+            }
+
+          </div>
+
+        }
+
+      </div>
+
+    } @else {
+
+      <div class="empty">
+        <p>No borrowed books yet.</p>
+      </div>
+
+    }
+
+  </div>
+
+</div>

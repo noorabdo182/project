@@ -1,0 +1,44 @@
+
+<div class="app-container">
+
+  <header class="navbar">
+
+    <div class="logo">
+      📚 My Library
+    </div>
+
+    <nav>
+
+      <a
+        routerLink="/dashboard"
+        routerLinkActive="active"
+      >
+        Dashboard
+      </a>
+
+      <a
+        routerLink="/books"
+        routerLinkActive="active"
+      >
+        Books
+      </a>
+
+      <a
+        routerLink="/borrow"
+        routerLinkActive="active"
+      >
+        Borrow
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <main class="main-content">
+
+    <router-outlet></router-outlet>
+
+  </main>
+
+</div>

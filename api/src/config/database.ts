@@ -1,11 +1,14 @@
-
 import mongoose from "mongoose";
 
 export async function connectToDatabase(
-mongoUri: string
+  mongoUri: string
 ): Promise<void> {
 
-await mongoose.connect (mongoUri);
+  await mongoose.connect(
+    mongoUri
+  );
 
-console. log("MongoDB connected");
+  console.log(
+    "MongoDB connected"
+  );
 }

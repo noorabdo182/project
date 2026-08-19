@@ -1,0 +1,87 @@
+
+.borrow-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.borrow-page > h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.borrow-form {
+  max-width: 550px;
+  margin: 0 auto 40px;
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.borrow-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.borrow-form select,
+.borrow-form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.borrow-form button,
+.borrowed-card button {
+  border: none;
+  padding: 11px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.borrow-form button {
+  width: 100%;
+}
+
+.borrowed-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.borrowed-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.borrowed-card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+}
+
+.borrowed-card h3 {
+  margin-top: 0;
+}
+
+.empty {
+  text-align: center;
+  padding: 25px;
+  border: 1px dashed #aaa;
+  border-radius: 10px;
+}
+
+@media (max-width: 650px) {
+  .borrowed-list {
+    grid-template-columns: 1fr;
+  }
+}

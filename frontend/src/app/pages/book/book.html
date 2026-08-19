@@ -1,0 +1,283 @@
+<div class="books-page">
+
+  <div class="books-header">
+
+    <div>
+
+      <h1>📚 Library Books</h1>
+
+      <p>
+        Manage and view all books in the library
+      </p>
+
+    </div>
+
+    <div class="header-right">
+
+      <div class="book-count">
+        {{ books.length }} Books
+      </div>
+
+      <button
+        class="add-btn"
+        (click)="openAddForm()"
+      >
+        + Add Book
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ADD / EDIT FORM -->
+
+  <div
+    class="form-container"
+    *ngIf="showForm"
+  >
+
+    <h2>
+      {{ editMode ? '✏️ Edit Book' : '➕ Add New Book' }}
+    </h2>
+
+
+    <div class="form-grid">
+
+      <div class="input-group">
+
+        <label>
+          Book Title
+        </label>
+
+        <input
+          type="text"
+          [(ngModel)]="form.title"
+          placeholder="Enter book title"
+        />
+
+      </div>
+
+
+      <div class="input-group">
+
+        <label>
+          Author
+        </label>
+
+        <input
+          type="text"
+          [(ngModel)]="form.author"
+          placeholder="Enter author name"
+        />
+
+      </div>
+
+
+      <div class="input-group">
+
+        <label>
+          ISBN
+        </label>
+
+        <input
+          type="text"
+          [(ngModel)]="form.isbn"
+          placeholder="Enter ISBN"
+        />
+
+      </div>
+
+
+      <div class="input-group">
+
+        <label>
+          Category
+        </label>
+
+        <input
+          type="text"
+          [(ngModel)]="form.category"
+          placeholder="Enter category"
+        />
+
+      </div>
+
+
+      <div class="input-group">
+
+        <label>
+          Quantity
+        </label>
+
+        <input
+          type="number"
+          min="1"
+          [(ngModel)]="form.quantity"
+          placeholder="Enter quantity"
+        />
+
+      </div>
+
+    </div>
+
+
+    <div class="form-buttons">
+
+      <button
+        class="save-btn"
+        (click)="saveBook()"
+      >
+
+        {{ editMode ? 'Update Book' : 'Add Book' }}
+
+      </button>
+
+
+      <button
+        class="cancel-btn"
+        (click)="closeForm()"
+      >
+
+        Cancel
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- BOOKS -->
+
+  <div
+    class="book-list"
+    *ngIf="books.length > 0"
+  >
+
+    <div
+      class="book-card"
+      *ngFor="let book of books"
+    >
+
+      <div class="book-icon">
+        📖
+      </div>
+
+
+      <h2>
+        {{ book.title }}
+      </h2>
+
+
+      <p class="author">
+        By {{ book.author }}
+      </p>
+
+
+      <div class="book-info">
+
+        <p>
+
+          <strong>
+            ISBN
+          </strong>
+
+          <span>
+            {{ book.isbn }}
+          </span>
+
+        </p>
+
+
+        <p>
+
+          <strong>
+            Category
+          </strong>
+
+          <span>
+            {{ book.category }}
+          </span>
+
+        </p>
+
+
+        <p>
+
+          <strong>
+            Quantity
+          </strong>
+
+          <span>
+            {{ book.quantity }}
+          </span>
+
+        </p>
+
+      </div>
+
+
+      <div
+        class="status"
+        [class.available]="book.available"
+        [class.unavailable]="!book.available"
+      >
+
+        {{ book.available ? 'Available' : 'Unavailable' }}
+
+      </div>
+
+
+      <!-- ACTIONS -->
+
+      <div class="actions">
+
+        <button
+          class="edit-btn"
+          (click)="openEditForm(book)"
+        >
+
+          ✏️ Edit
+
+        </button>
+
+
+        <button
+          class="delete-btn"
+          (click)="deleteBook(book)"
+        >
+
+          🗑️ Delete
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- EMPTY -->
+
+  <div
+    class="empty"
+    *ngIf="books.length === 0"
+  >
+
+    <div class="empty-icon">
+      📚
+    </div>
+
+    <h2>
+      No Books Found
+    </h2>
+
+    <p>
+      There are no books in the library yet.
+    </p>
+
+  </div>
+
+</div>
